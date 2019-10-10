@@ -60,7 +60,7 @@ flutter:
   fonts:
     - family: Quicksand
       fonts:
-        - asset:assets/fonts/Quicksand-Bold.ttf
+        - asset: fonts/Quicksand-Bold.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

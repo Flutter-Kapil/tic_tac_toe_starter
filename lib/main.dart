@@ -95,7 +95,10 @@ class _TicTacToePageState extends State<TicTacToePage> {
                 alignment: Alignment.bottomCenter,
                 child: Text(
                   "Tic-Tac-Toe",
-                  style: TextStyle(fontSize: 45, color: Colors.white),
+                  style: TextStyle(
+                      fontSize: 45,
+                      color: Colors.white,
+                      fontFamily: 'Quicksand'),
                 ),
               ),
             ),
