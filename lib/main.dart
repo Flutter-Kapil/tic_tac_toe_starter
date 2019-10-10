@@ -15,60 +15,63 @@ class TicTacToePage extends StatefulWidget {
 
 class _TicTacToePageState extends State<TicTacToePage> {
   Widget gameCube() {
-    return Column(
-      children: <Widget>[
-        Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Expanded(
-                child: OneBox(),
-              ),
-              Expanded(
-                child: OneBox(),
-              ),
-              Expanded(
-                child: OneBox(),
-              ),
-            ],
+    return Container(
+      margin: EdgeInsets.all(10),
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Expanded(
+                  child: OneBox(),
+                ),
+                Expanded(
+                  child: OneBox(),
+                ),
+                Expanded(
+                  child: OneBox(),
+                ),
+              ],
+            ),
           ),
-        ),
-        Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Expanded(
-                child: OneBox(),
-              ),
-              Expanded(
-                child: OneBox(),
-              ),
-              Expanded(
-                child: OneBox(),
-              ),
-            ],
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Expanded(
+                  child: OneBox(),
+                ),
+                Expanded(
+                  child: OneBox(),
+                ),
+                Expanded(
+                  child: OneBox(),
+                ),
+              ],
+            ),
           ),
-        ),
-        Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Expanded(
-                child: OneBox(),
-              ),
-              Expanded(
-                child: OneBox(),
-              ),
-              Expanded(
-                child: OneBox(),
-              ),
-            ],
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Expanded(
+                  child: OneBox(),
+                ),
+                Expanded(
+                  child: OneBox(),
+                ),
+                Expanded(
+                  child: OneBox(),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -78,13 +81,15 @@ class _TicTacToePageState extends State<TicTacToePage> {
       backgroundColor: Color(0xFFD6AA7C),
       body: SafeArea(
           child: Container(
+        padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/tictactoe2.png'), fit: BoxFit.fill)),
+                image: AssetImage('assets/tictactoe03.jpg'), fit: BoxFit.fill)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
+              flex: 3,
               child: Container(
                 margin: EdgeInsets.all(6),
                 alignment: Alignment.bottomCenter,
@@ -93,31 +98,38 @@ class _TicTacToePageState extends State<TicTacToePage> {
                   style: TextStyle(fontSize: 45, color: Colors.white),
                 ),
               ),
-              flex: 2,
             ),
             Expanded(
+              flex: 1,
               child: Container(
                 margin: EdgeInsets.all(6),
                 alignment: Alignment.topCenter,
                 child: Text(
                   "Player X Move",
                   style: TextStyle(
-                      fontSize: 25, color: Colors.white.withOpacity(0.6)),
+                      fontSize: 25,
+                      color: Colors.white.withOpacity(0.6),
+                      fontFamily: 'Quicksand'),
                 ),
               ),
-              flex: 1,
             ),
             Expanded(
+              flex: 7,
               child: gameCube(),
-              flex: 6,
             ),
             Expanded(
+              flex: 2,
               child: Visibility(
-                child: Row(
-                  children: <Widget>[
-                    Spacer(),
-                    Container(
-                      alignment: Alignment.topCenter,
+                  child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    child: SizedBox(),
+                    flex: 1,
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: SizedBox(
                       child: FlatButton(
                         color: Color(0xFF848AC1),
                         onPressed: () {},
@@ -126,11 +138,13 @@ class _TicTacToePageState extends State<TicTacToePage> {
                                 TextStyle(fontSize: 25, color: Colors.white)),
                       ),
                     ),
-                    Spacer()
-                  ],
-                ),
-              ),
-              flex: 2,
+                  ),
+                  Expanded(
+                    child: SizedBox(),
+                    flex: 1,
+                  ),
+                ],
+              )),
             )
           ],
         ),
@@ -148,13 +162,13 @@ class OneBox extends StatelessWidget {
     return Container(
       child: FlatButton(
         child: buttonChild,
-        color: Colors.white.withOpacity(0.5),
         onPressed: () {},
       ),
       margin: EdgeInsets.all(6),
       decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.4),
         borderRadius: BorderRadius.all(
-          Radius.circular(12),
+          Radius.circular(14),
         ),
       ),
     );
