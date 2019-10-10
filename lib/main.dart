@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -12,12 +14,84 @@ class TicTacToePage extends StatefulWidget {
 }
 
 class _TicTacToePageState extends State<TicTacToePage> {
+  Widget gameCube() {
+    return Column(
+      children: <Widget>[
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Expanded(
+                  child: Container(
+                color: Color(0xFF848AC1),
+                margin: EdgeInsets.all(8),
+              )),
+              Expanded(
+                  child: Container(
+                color: Color(0xFF848AC1),
+                margin: EdgeInsets.all(8),
+              )),
+              Expanded(
+                  child: Container(
+                color: Color(0xFF848AC1),
+                margin: EdgeInsets.all(8),
+              )),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Expanded(
+                  child: Container(
+                color: Color(0xFF848AC1),
+                margin: EdgeInsets.all(8),
+              )),
+              Expanded(
+                  child: Container(
+                color: Color(0xFF848AC1),
+                margin: EdgeInsets.all(8),
+              )),
+              Expanded(
+                  child: Container(
+                color: Color(0xFF848AC1),
+                margin: EdgeInsets.all(8),
+              )),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Expanded(
+                  child: Container(
+                color: Color(0xFF848AC1),
+                margin: EdgeInsets.all(8),
+              )),
+              Expanded(
+                  child: Container(
+                color: Color(0xFF848AC1),
+                margin: EdgeInsets.all(8),
+              )),
+              Expanded(
+                  child: Container(
+                color: Color(0xFF848AC1),
+                margin: EdgeInsets.all(8),
+              )),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Play On!'),
-      ),
+      backgroundColor: Color(0xFF2F398B),
+      body: SafeArea(child: gameCube()),
     );
   }
 }
