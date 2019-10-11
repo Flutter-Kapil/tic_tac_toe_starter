@@ -29,7 +29,6 @@ class _TicTacToePageState extends State<TicTacToePage> {
                 Expanded(
                   child: OneBox(
                     onPressed: () {
-
                       setState(() {});
                     },
                   ),
