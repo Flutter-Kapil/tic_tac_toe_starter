@@ -158,7 +158,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
 
 class OneBox extends StatelessWidget {
   final Widget buttonChild;
-  OneBox({this.buttonChild = const Text('test')});
+  OneBox({this.buttonChild = const Text('')});
 
   @override
   Widget build(BuildContext context) {
