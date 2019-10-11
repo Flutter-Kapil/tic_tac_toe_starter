@@ -29,3 +29,12 @@ void changePlayer(String x) {
     currentPlayer = 'X';
   }
 }
+
+void gameReset() {
+  board = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null]
+  ];
+  currentPlayer = 'X';
+}
