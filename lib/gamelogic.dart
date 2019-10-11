@@ -46,50 +46,24 @@ void gameWin(List<List<Icon>> gameBoard) {
 }
 
 bool xWinnerCheck(List<List<Icon>> board) {
-  if (board[0][0] == xIcon && board[0][1] == xIcon && board[0][2] == xIcon) {
-    print("X won");
-    return true;
-  } else if (board[1][0] == xIcon &&
-      board[1][1] == xIcon &&
-      board[1][2] == xIcon) {
-    print("X won");
-    return true;
-  } else if (board[2][0] == xIcon &&
-      board[2][1] == xIcon &&
-      board[2][2] == xIcon) {
-    print("X won");
-    return true;
-  } else if (board[0][0] == xIcon &&
-      board[1][0] == xIcon &&
-      board[2][0] == xIcon) {
-    print("X won");
-    return true;
-  } else if (board[0][1] == xIcon &&
-      board[1][1] == xIcon &&
-      board[2][1] == xIcon) {
-    print("X won");
-    return true;
-  } else if (board[0][2] == xIcon &&
-      board[1][2] == xIcon &&
-      board[2][2] == xIcon) {
-    print("X won");
-    return true;
-  } else if (board[0][0] == xIcon &&
-      board[1][1] == xIcon &&
-      board[2][2] == xIcon) {
-    print("X won");
-    return true;
-  } else if (board[0][2] == xIcon &&
-      board[1][1] == xIcon &&
-      board[2][0] == xIcon) {
-    print("X won");
-    return true;
-  } else {
-    return false;
+  for (int i = 0; i < 3; i++) {
+    if (board[i][0] == xIcon && board[i][1] == xIcon && board[i][2] == xIcon) {
+      return true;
+    }
+    if (board[0][i] == xIcon && board[1][i] == xIcon && board[2][i] == xIcon) {
+      return true;
+    }
   }
+  if (board[0][0] == xIcon && board[1][1] == xIcon && board[2][2] == xIcon) {
+    return true;
+  }
+  if (board[0][2] == xIcon && board[1][1] == xIcon && board[2][0] == xIcon) {
+    return true;
+  }
+  return false;
 }
 
-bool oWinnerCheck2(List<List<Icon>> board) {
+bool oWinnerCheck(List<List<Icon>> board) {
   for (int i = 0; i < 3; i++) {
     if (board[i][0] == oIcon && board[i][1] == oIcon && board[i][2] == oIcon) {
       return true;
@@ -105,48 +79,4 @@ bool oWinnerCheck2(List<List<Icon>> board) {
     return true;
   }
   return false;
-}
-
-bool oWinnerCheck(List<List<Icon>> board) {
-  if (board[0][0] == oIcon && board[0][1] == oIcon && board[0][2] == oIcon) {
-    print("O won");
-    return true;
-  } else if (board[1][0] == oIcon &&
-      board[1][1] == oIcon &&
-      board[1][2] == oIcon) {
-    print("O won");
-    return true;
-  } else if (board[2][0] == oIcon &&
-      board[2][1] == oIcon &&
-      board[2][2] == oIcon) {
-    print("O won");
-    return true;
-  } else if (board[0][0] == oIcon &&
-      board[1][0] == oIcon &&
-      board[2][0] == oIcon) {
-    print("O won");
-    return true;
-  } else if (board[0][1] == oIcon &&
-      board[1][1] == oIcon &&
-      board[2][1] == oIcon) {
-    print("O won");
-    return true;
-  } else if (board[0][2] == oIcon &&
-      board[1][2] == oIcon &&
-      board[2][2] == oIcon) {
-    print("O won");
-    return true;
-  } else if (board[0][0] == oIcon &&
-      board[1][1] == oIcon &&
-      board[2][2] == oIcon) {
-    print("O won");
-    return true;
-  } else if (board[0][2] == oIcon &&
-      board[1][1] == oIcon &&
-      board[2][0] == oIcon) {
-    print("O won");
-    return true;
-  } else {
-    return false;
-  }
 }
