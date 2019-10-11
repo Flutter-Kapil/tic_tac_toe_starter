@@ -234,13 +234,15 @@ class _TicTacToePageState extends State<TicTacToePage> {
                             child: OneBox(
                               buttonChild: board[0][0],
                               onTap: () {
-                                if (currentPlayer == "X") {
-                                  board[0][0] = playerXIcon;
-                                } else if (currentPlayer == "O") {
-                                  board[0][0] = playerOIcon;
+                                if (board[0][0] == null) {
+                                  if (currentPlayer == "X") {
+                                    board[0][0] = playerXIcon;
+                                  } else if (currentPlayer == "O") {
+                                    board[0][0] = playerOIcon;
+                                  }
+                                  winnerPopup();
+                                  changePlayer();
                                 }
-                                winnerPopup();
-                                changePlayer();
                                 setState(() {});
                               },
                             ),
@@ -249,13 +251,16 @@ class _TicTacToePageState extends State<TicTacToePage> {
                             child: OneBox(
                               buttonChild: board[0][1],
                               onTap: () {
-                                if (currentPlayer == "X") {
-                                  board[0][1] = playerXIcon;
-                                } else if (currentPlayer == "O") {
-                                  board[0][1] = playerOIcon;
+                                print(board[0][1]);
+                                if (board[0][1] == null) {
+                                  if (currentPlayer == "X") {
+                                    board[0][1] = playerXIcon;
+                                  } else if (currentPlayer == "O") {
+                                    board[0][1] = playerOIcon;
+                                  }
+                                  winnerPopup();
+                                  changePlayer();
                                 }
-                                winnerPopup();
-                                changePlayer();
                                 setState(() {});
                               },
                             ),
