@@ -136,7 +136,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                 margin: EdgeInsets.all(6),
                 alignment: Alignment.topCenter,
                 child: Text(
-                  "Player X Move",
+                  "Player $currentPlayer Move",
                   style: TextStyle(
                       fontSize: 25,
                       color: Colors.white.withOpacity(0.6),
