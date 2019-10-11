@@ -20,7 +20,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
   @override
   Widget build(BuildContext context) {
     void winnerPopup() {
-      if (xWinnerCheck(board) || oWinnerCheck(board)) {
+      if (winnerCheck(board)) {
         Alert(
           context: context,
           title: "game Over",

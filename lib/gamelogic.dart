@@ -56,12 +56,18 @@ void gameWin(List<List<Icon>> gameBoard) {
   }
 }
 
-bool xWinnerCheck(List<List<Icon>> board) {
+bool winnerCheck(List<List<Icon>> board) {
   for (int i = 0; i < 3; i++) {
     if (board[i][0] == xIcon && board[i][1] == xIcon && board[i][2] == xIcon) {
       return true;
     }
     if (board[0][i] == xIcon && board[1][i] == xIcon && board[2][i] == xIcon) {
+      return true;
+    }
+    if (board[i][0] == oIcon && board[i][1] == oIcon && board[i][2] == oIcon) {
+      return true;
+    }
+    if (board[0][i] == oIcon && board[1][i] == oIcon && board[2][i] == oIcon) {
       return true;
     }
   }
@@ -70,19 +76,6 @@ bool xWinnerCheck(List<List<Icon>> board) {
   }
   if (board[0][2] == xIcon && board[1][1] == xIcon && board[2][0] == xIcon) {
     return true;
-  }
-  return false;
-}
-
-bool oWinnerCheck(List<List<Icon>> board) {
-  for (int i = 0; i < 3; i++) {
-    if (board[i][0] == oIcon && board[i][1] == oIcon && board[i][2] == oIcon) {
-      return true;
-    } else if (board[0][i] == oIcon &&
-        board[1][i] == oIcon &&
-        board[2][i] == oIcon) {
-      return true;
-    } //this if logic is not working.
   }
   if (board[0][0] == oIcon && board[1][1] == oIcon && board[2][2] == oIcon) {
     return true;
