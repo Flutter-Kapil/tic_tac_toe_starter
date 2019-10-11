@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'gamelogic.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -24,6 +25,11 @@ class _TicTacToePageState extends State<TicTacToePage> {
           context: context,
           title: "game Over",
           desc: "Player $currentPlayer won",
+          style: const AlertStyle(
+            backgroundColor: Colors.white30,
+            isOverlayTapDismiss: false,
+            isCloseButton: false,
+          ),
           buttons: [
             DialogButton(
               child: Text(
