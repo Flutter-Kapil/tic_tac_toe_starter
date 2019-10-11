@@ -23,8 +23,8 @@ class _TicTacToePageState extends State<TicTacToePage> {
       if (winnerCheck(board)) {
         Alert(
           context: context,
-          title: "game Over",
-          desc: "Player $currentPlayer won",
+          title: "Game Over",
+          desc: "Player $currentPlayer Won",
           style: const AlertStyle(
             backgroundColor: Colors.white30,
             isOverlayTapDismiss: false,
@@ -89,7 +89,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
             Expanded(
               flex: 7,
               child: Container(
-                margin: EdgeInsets.all(10),
+                margin: EdgeInsets.all(6),
                 child: Column(
                   children: <Widget>[
                     Expanded(
@@ -273,7 +273,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
               flex: 2,
               child: Visibility(
                   child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(
                     child: SizedBox(),
