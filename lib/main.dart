@@ -27,7 +27,12 @@ class _TicTacToePageState extends State<TicTacToePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Expanded(
-                  child: OneBox(),
+                  child: OneBox(
+                    onPressed: () {
+
+                      setState(() {});
+                    },
+                  ),
                 ),
                 Expanded(
                   child: OneBox(),
