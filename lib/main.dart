@@ -254,7 +254,15 @@ class _TicTacToePageState extends State<TicTacToePage> {
                     child: SizedBox(
                       child: FlatButton(
                         color: Color(0xFF848AC1),
-                        onPressed: () {},
+                        onPressed: () {
+                          board = [
+                            [null, null, null],
+                            [null, null, null],
+                            [null, null, null]
+                          ];
+                          currentPlayer = 'X';
+                          setState(() {});
+                        },
                         child: Text("Reset",
                             style:
                                 TextStyle(fontSize: 25, color: Colors.white)),
