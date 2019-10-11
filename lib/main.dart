@@ -8,6 +8,8 @@ void main() {
   ));
 }
 
+enum Player { x, o }
+
 class TicTacToePage extends StatefulWidget {
   @override
   _TicTacToePageState createState() => _TicTacToePageState();
@@ -15,20 +17,17 @@ class TicTacToePage extends StatefulWidget {
 
 class _TicTacToePageState extends State<TicTacToePage> {
   String currentPlayer = '';
-  Icon playerIcon;
-  List<List<String>> board = [
-    ["", "", ""],
-    ["", "", ""],
-    ["", "", ""]
+  Icon playerXIcon = Icon(Icons.close);
+  Icon playerOIcon = Icon(Icons.gps_off);
+  List<List<Icon>> board = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null]
   ];
+  Icon playerIcon = null;
 
   @override
   Widget build(BuildContext context) {
-    if (currentPlayer == "X") {
-      playerIcon = Icon(Icons.close);
-    } else if (currentPlayer == "O") {
-      playerIcon = Icon(Icons.check_circle);
-    }
     return Scaffold(
       backgroundColor: Color(0xFFD6AA7C),
       body: SafeArea(
@@ -81,42 +80,24 @@ class _TicTacToePageState extends State<TicTacToePage> {
                         children: <Widget>[
                           Expanded(
                             child: OneBox(
-                              buttonChild: playerIcon,
+                              buttonChild: board[0][0],
                               onTap: () {
-                                board[0][0] = currentPlayer;
-                                if (currentPlayer == 'X') {
-                                  currentPlayer = 'O';
-                                } else {
-                                  currentPlayer = 'X';
-                                }
                                 setState(() {});
                               },
                             ),
                           ),
                           Expanded(
                             child: OneBox(
-                              buttonChild: Text(board[0][1]),
+                              buttonChild: board[0][1],
                               onTap: () {
-                                board[0][1] = currentPlayer;
-                                if (currentPlayer == 'X') {
-                                  currentPlayer = 'O';
-                                } else {
-                                  currentPlayer = 'X';
-                                }
                                 setState(() {});
                               },
                             ),
                           ),
                           Expanded(
                             child: OneBox(
-                              buttonChild: Text(board[0][2]),
+                              buttonChild: board[0][2],
                               onTap: () {
-                                board[0][2] = currentPlayer;
-                                if (currentPlayer == 'X') {
-                                  currentPlayer = 'O';
-                                } else {
-                                  currentPlayer = 'X';
-                                }
                                 setState(() {});
                               },
                             ),
@@ -131,42 +112,24 @@ class _TicTacToePageState extends State<TicTacToePage> {
                         children: <Widget>[
                           Expanded(
                             child: OneBox(
-                              buttonChild: Text(board[1][0]),
+                              buttonChild: board[1][0],
                               onTap: () {
-                                board[1][0] = currentPlayer;
-                                if (currentPlayer == 'X') {
-                                  currentPlayer = 'O';
-                                } else {
-                                  currentPlayer = 'X';
-                                }
                                 setState(() {});
                               },
                             ),
                           ),
                           Expanded(
                             child: OneBox(
-                              buttonChild: Text(board[1][1]),
+                              buttonChild: board[1][1],
                               onTap: () {
-                                board[1][1] = currentPlayer;
-                                if (currentPlayer == 'X') {
-                                  currentPlayer = 'O';
-                                } else {
-                                  currentPlayer = 'X';
-                                }
                                 setState(() {});
                               },
                             ),
                           ),
                           Expanded(
                             child: OneBox(
-                              buttonChild: Text(board[1][2]),
+                              buttonChild: board[1][2],
                               onTap: () {
-                                board[1][2] = currentPlayer;
-                                if (currentPlayer == 'X') {
-                                  currentPlayer = 'O';
-                                } else {
-                                  currentPlayer = 'X';
-                                }
                                 setState(() {});
                               },
                             ),
@@ -181,42 +144,24 @@ class _TicTacToePageState extends State<TicTacToePage> {
                         children: <Widget>[
                           Expanded(
                             child: OneBox(
-                              buttonChild: Text(board[2][0]),
+                              buttonChild: board[2][0],
                               onTap: () {
-                                board[2][0] = currentPlayer;
-                                if (currentPlayer == 'X') {
-                                  currentPlayer = 'O';
-                                } else {
-                                  currentPlayer = 'X';
-                                }
                                 setState(() {});
                               },
                             ),
                           ),
                           Expanded(
                             child: OneBox(
-                              buttonChild: Text(board[2][1]),
+                              buttonChild: board[2][1],
                               onTap: () {
-                                board[2][1] = currentPlayer;
-                                if (currentPlayer == 'X') {
-                                  currentPlayer = 'O';
-                                } else {
-                                  currentPlayer = 'X';
-                                }
                                 setState(() {});
                               },
                             ),
                           ),
                           Expanded(
                             child: OneBox(
-                              buttonChild: Text(board[2][2]),
+                              buttonChild: board[2][2],
                               onTap: () {
-                                board[2][2] = currentPlayer;
-                                if (currentPlayer == 'X') {
-                                  currentPlayer = 'O';
-                                } else {
-                                  currentPlayer = 'X';
-                                }
                                 setState(() {});
                               },
                             ),
@@ -245,9 +190,9 @@ class _TicTacToePageState extends State<TicTacToePage> {
                         color: Color(0xFF848AC1),
                         onPressed: () {
                           board = [
-                            ["", "", ""],
-                            ["", "", ""],
-                            ["", "", ""]
+                            [null, null, null],
+                            [null, null, null],
+                            [null, null, null]
                           ];
                           currentPlayer = "X";
                           setState(() {});
