@@ -47,6 +47,36 @@ class _TicTacToePageState extends State<TicTacToePage> {
     }
   }
 
+  void winnerPopup() {
+    if (winner(board, playerIcon)) {
+      Alert(
+        context: context,
+        title: "game Over",
+        desc: "$currentPlayer won",
+        buttons: [
+          DialogButton(
+            child: Text(
+              "Restart",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () {
+              board = [
+                [null, null, null],
+                [null, null, null],
+                [null, null, null]
+              ];
+              setState(() {});
+              return Navigator.pop(context);
+            },
+            width: 120,
+          )
+        ],
+      ).show();
+      currentPlayer = "X";
+      playerIcon = null;
+    }
+  }
+
 //function to check winner, which takes in board and Icon as input
   bool winner(List<List<Icon>> board, Icon x) {
     if (board[0][0] == x && board[0][1] == x && board[0][2] == x) {
@@ -136,12 +166,15 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               onTap: () {
                                 if (currentPlayer == "X") {
                                   board[0][0] = playerXIcon;
-                                  currentPlayer = 'O';
                                 } else if (currentPlayer == "O") {
                                   board[0][0] = playerOIcon;
+                                }
+                                winnerPopup();
+                                if (currentPlayer == 'X') {
+                                  currentPlayer = 'O';
+                                } else {
                                   currentPlayer = 'X';
                                 }
-                                winner(board, playerIcon);
                                 setState(() {});
                               },
                             ),
