@@ -63,7 +63,6 @@ class _TicTacToePageState extends State<TicTacToePage> {
             Expanded(
               flex: 3,
               child: Container(
-                margin: EdgeInsets.all(6),
                 alignment: Alignment.bottomCenter,
                 child: Text(
                   "Tic-Tac-Toe",
@@ -77,7 +76,6 @@ class _TicTacToePageState extends State<TicTacToePage> {
             Expanded(
               flex: 1,
               child: Container(
-                margin: EdgeInsets.all(6),
                 alignment: Alignment.topCenter,
                 child: Text(
                   "Player $currentPlayer Move",
