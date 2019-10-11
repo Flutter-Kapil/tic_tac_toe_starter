@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -25,12 +26,57 @@ class _TicTacToePageState extends State<TicTacToePage> {
     Icons.all_out,
     size: 50,
   );
+
   List<List<Icon>> board = [
+    //empty list of icons
     [null, null, null],
     [null, null, null],
     [null, null, null]
   ];
+
   Icon playerIcon = null;
+
+  void updateIcon(String x) {
+    // simple function to update icon and also change value of current player
+    if (x == "X") {
+      currentPlayer = 'O';
+      playerIcon = playerXIcon;
+    } else if (x == "O") {
+      playerIcon = playerOIcon;
+      currentPlayer = 'X';
+    }
+  }
+
+//function to check winner, which takes in board and Icon as input
+  bool winner(List<List<Icon>> board, Icon x) {
+    if (board[0][0] == x && board[0][1] == x && board[0][2] == x) {
+      print("$x won");
+      return true;
+    } else if (board[1][0] == x && board[1][1] == x && board[1][2] == x) {
+      print("$x won");
+      return true;
+    } else if (board[2][0] == x && board[2][1] == x && board[2][2] == x) {
+      print("$x won");
+      return true;
+    } else if (board[0][0] == x && board[1][0] == x && board[2][0] == x) {
+      print("$x won");
+      return true;
+    } else if (board[0][1] == x && board[1][1] == x && board[2][1] == x) {
+      print("$x won");
+      return true;
+    } else if (board[0][2] == x && board[1][2] == x && board[2][2] == x) {
+      print("$x won");
+      return true;
+    } else if (board[0][0] == x && board[1][1] == x && board[2][2] == x) {
+      print("$x won");
+      return true;
+    } else if (board[0][2] == x && board[1][1] == x && board[2][0] == x) {
+      print("$x won");
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +141,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                                   board[0][0] = playerOIcon;
                                   currentPlayer = 'X';
                                 }
+                                winner(board, playerIcon);
                                 setState(() {});
                               },
                             ),
