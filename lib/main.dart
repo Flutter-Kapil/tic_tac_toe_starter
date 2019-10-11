@@ -28,13 +28,35 @@ class _TicTacToePageState extends State<TicTacToePage> {
               children: <Widget>[
                 Expanded(
                   child: OneBox(
+                    buttonChild: board[0][0],
                     onPressed: () {
+                      if (legitMove(board[0][0])) {
+                        if (currentPlayer == 'X') {
+                          board[0][0] = xIcon;
+                        } else {
+                          board[0][0] = oIcon;
+                        }
+                        changePlayer(currentPlayer);
+                      }
                       setState(() {});
                     },
                   ),
                 ),
                 Expanded(
-                  child: OneBox(),
+                  child: OneBox(
+                    buttonChild: board[0][1],
+                    onPressed: () {
+                      if (legitMove(board[0][1])) {
+                        if (currentPlayer == 'X') {
+                          board[0][1] = xIcon;
+                        } else {
+                          board[0][1] = oIcon;
+                        }
+                        changePlayer(currentPlayer);
+                      }
+                      setState(() {});
+                    },
+                  ),
                 ),
                 Expanded(
                   child: OneBox(),
