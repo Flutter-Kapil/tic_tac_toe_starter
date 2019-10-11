@@ -297,7 +297,7 @@ class OneBox extends StatelessWidget {
       ),
       margin: EdgeInsets.all(6),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.17),
+        color: Colors.white.withOpacity(0.4),
         borderRadius: BorderRadius.all(
           Radius.circular(14),
         ),
