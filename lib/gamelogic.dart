@@ -90,34 +90,21 @@ bool xWinnerCheck(List<List<Icon>> board) {
 }
 
 bool oWinnerCheck2(List<List<Icon>> board) {
-  bool result;
   for (int i = 0; i < 3; i++) {
     if (board[i][0] == oIcon && board[i][1] == oIcon && board[i][2] == oIcon) {
-      print("O2 won");
-      result = true;
-      print("value of result is $result");
-    } else {
-      if (board[0][i] == oIcon &&
-          board[1][i] == oIcon &&
-          board[2][i] == oIcon) {
-        print("O2 won");
-        result = true;
-        print("value of result is $result");
-      }
-    } //this if logic is not working.
+      return true;
+    }
+    if (board[0][i] == oIcon && board[1][i] == oIcon && board[2][i] == oIcon) {
+      return true;
+    }
   }
   if (board[0][0] == oIcon && board[1][1] == oIcon && board[2][2] == oIcon) {
-    print("O2 won");
-    result = true;
-  } else if (board[0][2] == oIcon &&
-      board[1][1] == oIcon &&
-      board[2][0] == oIcon) {
-    print("O2 won");
-    result = true;
-  } else {
-    result = false;
+    return true;
   }
-  return result;
+  if (board[0][2] == oIcon && board[1][1] == oIcon && board[2][0] == oIcon) {
+    return true;
+  }
+  return false;
 }
 
 bool oWinnerCheck(List<List<Icon>> board) {
