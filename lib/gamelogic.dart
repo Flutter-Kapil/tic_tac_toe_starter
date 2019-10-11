@@ -16,10 +16,10 @@ Icon xIcon = Icon(Icons.close);
 Icon oIcon = Icon(Icons.gps_not_fixed);
 
 //function to change player based on currentPlayer value which is a string,
-void changePlayer(String x){
-  if(x=='X'){
+void changePlayer(String x) {
+  if (x == 'X') {
     currentPlayer = 'O';
-  }else if(x=='O'){
+  } else if (x == 'O') {
     currentPlayer = 'X';
   }
 }
