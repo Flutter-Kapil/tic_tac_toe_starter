@@ -14,3 +14,12 @@ bool legitMove(Icon icon) => icon == null;
 String currentPlayer = 'X'; //X will always be player 1
 Icon xIcon = Icon(Icons.close);
 Icon oIcon = Icon(Icons.gps_not_fixed);
+
+//function to change player based on currentPlayer value which is a string,
+void changePlayer(String x){
+  if(x=='X'){
+    currentPlayer = 'O';
+  }else if(x=='O'){
+    currentPlayer = 'X';
+  }
+}
