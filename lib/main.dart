@@ -158,14 +158,16 @@ class _TicTacToePageState extends State<TicTacToePage> {
 
 class OneBox extends StatelessWidget {
   final Widget buttonChild;
-  OneBox({this.buttonChild = const Text('')});
+  final Function onPressed;
+  OneBox({this.buttonChild = const Text(''),this.onPressed});
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: FlatButton(
         child: buttonChild,
-        onPressed: () {},
+        onPressed: onPressed,
       ),
       margin: EdgeInsets.all(6),
       decoration: BoxDecoration(
