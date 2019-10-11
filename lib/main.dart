@@ -59,8 +59,21 @@ class _TicTacToePageState extends State<TicTacToePage> {
                   ),
                 ),
                 Expanded(
-                  child: OneBox(),
-                ),
+                  child: OneBox(
+                    buttonChild: board[0][2],
+                    onPressed: () {
+                      if (legitMove(board[0][2])) {
+                        if (currentPlayer == 'X') {
+                          board[0][2] = xIcon;
+                        } else {
+                          board[0][2] = oIcon;
+                        }
+                        changePlayer(currentPlayer);
+                      }
+                      setState(() {});
+                    },
+                  ),
+                )
               ],
             ),
           ),
@@ -70,14 +83,53 @@ class _TicTacToePageState extends State<TicTacToePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Expanded(
-                  child: OneBox(),
+                  child: OneBox(
+                    buttonChild: board[1][0],
+                    onPressed: () {
+                      if (legitMove(board[1][0])) {
+                        if (currentPlayer == 'X') {
+                          board[1][0] = xIcon;
+                        } else {
+                          board[1][0] = oIcon;
+                        }
+                        changePlayer(currentPlayer);
+                      }
+                      setState(() {});
+                    },
+                  ),
                 ),
                 Expanded(
-                  child: OneBox(),
+                  child: OneBox(
+                    buttonChild: board[1][1],
+                    onPressed: () {
+                      if (legitMove(board[1][1])) {
+                        if (currentPlayer == 'X') {
+                          board[1][1] = xIcon;
+                        } else {
+                          board[1][1] = oIcon;
+                        }
+                        changePlayer(currentPlayer);
+                      }
+                      setState(() {});
+                    },
+                  ),
                 ),
                 Expanded(
-                  child: OneBox(),
-                ),
+                  child: OneBox(
+                    buttonChild: board[1][2],
+                    onPressed: () {
+                      if (legitMove(board[1][2])) {
+                        if (currentPlayer == 'X') {
+                          board[1][2] = xIcon;
+                        } else {
+                          board[1][2] = oIcon;
+                        }
+                        changePlayer(currentPlayer);
+                      }
+                      setState(() {});
+                    },
+                  ),
+                )
               ],
             ),
           ),
@@ -87,14 +139,53 @@ class _TicTacToePageState extends State<TicTacToePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Expanded(
-                  child: OneBox(),
+                  child: OneBox(
+                    buttonChild: board[2][0],
+                    onPressed: () {
+                      if (legitMove(board[2][0])) {
+                        if (currentPlayer == 'X') {
+                          board[2][0] = xIcon;
+                        } else {
+                          board[2][0] = oIcon;
+                        }
+                        changePlayer(currentPlayer);
+                      }
+                      setState(() {});
+                    },
+                  ),
                 ),
                 Expanded(
-                  child: OneBox(),
+                  child: OneBox(
+                    buttonChild: board[2][1],
+                    onPressed: () {
+                      if (legitMove(board[2][1])) {
+                        if (currentPlayer == 'X') {
+                          board[2][1] = xIcon;
+                        } else {
+                          board[2][1] = oIcon;
+                        }
+                        changePlayer(currentPlayer);
+                      }
+                      setState(() {});
+                    },
+                  ),
                 ),
                 Expanded(
-                  child: OneBox(),
-                ),
+                  child: OneBox(
+                    buttonChild: board[2][2],
+                    onPressed: () {
+                      if (legitMove(board[2][2])) {
+                        if (currentPlayer == 'X') {
+                          board[2][2] = xIcon;
+                        } else {
+                          board[2][2] = oIcon;
+                        }
+                        changePlayer(currentPlayer);
+                      }
+                      setState(() {});
+                    },
+                  ),
+                )
               ],
             ),
           ),
