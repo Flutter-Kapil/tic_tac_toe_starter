@@ -12,8 +12,14 @@ bool legitMove(Icon icon) => icon == null;
 
 //default parameters
 String currentPlayer = 'X'; //X will always be player 1
-Icon xIcon = Icon(Icons.close);
-Icon oIcon = Icon(Icons.gps_not_fixed);
+Icon xIcon = Icon(
+  Icons.close,
+  size: 45,
+);
+Icon oIcon = Icon(
+  Icons.gps_not_fixed,
+  size: 45,
+);
 
 //function to change player based on currentPlayer value which is a string,
 void changePlayer(String x) {
