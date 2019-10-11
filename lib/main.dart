@@ -52,8 +52,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
 
     return Scaffold(
       backgroundColor: Color(0xFFD6AA7C),
-      body: SafeArea(
-          child: Container(
+      body: Container(
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
             image: DecorationImage(
@@ -105,12 +104,16 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[0][0],
                               onPressed: () {
                                 if (legitMove(board[0][0])) {
+                                  print(board[0][0].runtimeType);
                                   if (currentPlayer == 'X') {
-                                    board[0][0] = xIcon;
+                                    playerIcon = xIcon;
+                                    board[0][0] = playerIcon;
                                   } else {
-                                    board[0][0] = oIcon;
+                                    playerIcon = oIcon;
+                                    board[0][0] = playerIcon;
                                   }
                                   winnerPopup();
+                                  print(board[0][0].runtimeType);
                                 }
 
                                 setState(() {});
@@ -302,7 +305,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
             )
           ],
         ),
-      )),
+      ),
     );
   }
 }
