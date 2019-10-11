@@ -14,66 +14,12 @@ class TicTacToePage extends StatefulWidget {
 }
 
 class _TicTacToePageState extends State<TicTacToePage> {
-  Widget gameCube() {
-    return Container(
-      margin: EdgeInsets.all(10),
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Expanded(
-                  child: OneBox(),
-                ),
-                Expanded(
-                  child: OneBox(),
-                ),
-                Expanded(
-                  child: OneBox(),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Expanded(
-                  child: OneBox(),
-                ),
-                Expanded(
-                  child: OneBox(),
-                ),
-                Expanded(
-                  child: OneBox(),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Expanded(
-                  child: OneBox(),
-                ),
-                Expanded(
-                  child: OneBox(),
-                ),
-                Expanded(
-                  child: OneBox(),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  String currentPlayer = 'X';
+  List<List<String>> board = [
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""]
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +64,118 @@ class _TicTacToePageState extends State<TicTacToePage> {
             ),
             Expanded(
               flex: 7,
-              child: gameCube(),
+              child: Container(
+                margin: EdgeInsets.all(10),
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Expanded(
+                            child: OneBox(
+                              buttonChild: Text(board[0][0]),
+                              onTap: () {
+                                board[0][0] = currentPlayer;
+                                setState(() {});
+                              },
+                            ),
+                          ),
+                          Expanded(
+                            child: OneBox(
+                              buttonChild: Text(board[0][1]),
+                              onTap: () {
+                                board[0][1] = currentPlayer;
+                                setState(() {});
+                              },
+                            ),
+                          ),
+                          Expanded(
+                            child: OneBox(
+                              buttonChild: Text(board[0][2]),
+                              onTap: () {
+                                board[0][2] = currentPlayer;
+                                setState(() {});
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Expanded(
+                            child: OneBox(
+                              buttonChild: Text(board[1][0]),
+                              onTap: () {
+                                board[1][0] = currentPlayer;
+                                setState(() {});
+                              },
+                            ),
+                          ),
+                          Expanded(
+                            child: OneBox(
+                              buttonChild: Text(board[1][1]),
+                              onTap: () {
+                                board[1][1] = currentPlayer;
+                                setState(() {});
+                              },
+                            ),
+                          ),
+                          Expanded(
+                            child: OneBox(
+                              buttonChild: Text(board[1][2]),
+                              onTap: () {
+                                board[1][2] = currentPlayer;
+                                setState(() {});
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Expanded(
+                            child: OneBox(
+                              buttonChild: Text(board[2][0]),
+                              onTap: () {
+                                board[2][0] = currentPlayer;
+                                setState(() {});
+                              },
+                            ),
+                          ),
+                          Expanded(
+                            child: OneBox(
+                              buttonChild: Text(board[2][1]),
+                              onTap: () {
+                                board[2][1] = currentPlayer;
+                                setState(() {});
+                              },
+                            ),
+                          ),
+                          Expanded(
+                            child: OneBox(
+                              buttonChild: Text(board[2][2]),
+                              onTap: () {
+                                board[2][2] = currentPlayer;
+                                setState(() {});
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
             Expanded(
               flex: 2,
@@ -135,7 +192,14 @@ class _TicTacToePageState extends State<TicTacToePage> {
                     child: SizedBox(
                       child: FlatButton(
                         color: Color(0xFF848AC1),
-                        onPressed: () {},
+                        onPressed: () {
+                          board = [
+                            ["", "", ""],
+                            ["", "", ""],
+                            ["", "", ""]
+                          ];
+                          setState(() {});
+                        },
                         child: Text("Reset",
                             style:
                                 TextStyle(fontSize: 25, color: Colors.white)),
@@ -158,14 +222,15 @@ class _TicTacToePageState extends State<TicTacToePage> {
 
 class OneBox extends StatelessWidget {
   final Widget buttonChild;
-  OneBox({this.buttonChild = const Text('test')});
+  final Function onTap;
+  OneBox({this.buttonChild = const Text(''), this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: FlatButton(
         child: buttonChild,
-        onPressed: () {},
+        onPressed: onTap,
       ),
       margin: EdgeInsets.all(6),
       decoration: BoxDecoration(
