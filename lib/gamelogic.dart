@@ -91,42 +91,42 @@ bool xWinnerCheck(List<List<Icon>> board) {
 
 bool oWinnerCheck(List<List<Icon>> board) {
   if (board[0][0] == oIcon && board[0][1] == oIcon && board[0][2] == oIcon) {
-    print("X won");
+    print("O won");
     return true;
   } else if (board[1][0] == oIcon &&
       board[1][1] == oIcon &&
       board[1][2] == oIcon) {
-    print("X won");
+    print("O won");
     return true;
   } else if (board[2][0] == oIcon &&
       board[2][1] == oIcon &&
       board[2][2] == oIcon) {
-    print("X won");
+    print("O won");
     return true;
   } else if (board[0][0] == oIcon &&
       board[1][0] == oIcon &&
       board[2][0] == oIcon) {
-    print("X won");
+    print("O won");
     return true;
   } else if (board[0][1] == oIcon &&
       board[1][1] == oIcon &&
       board[2][1] == oIcon) {
-    print("X won");
+    print("O won");
     return true;
   } else if (board[0][2] == oIcon &&
       board[1][2] == oIcon &&
       board[2][2] == oIcon) {
-    print("X won");
+    print("O won");
     return true;
   } else if (board[0][0] == oIcon &&
       board[1][1] == oIcon &&
       board[2][2] == oIcon) {
-    print("X won");
+    print("O won");
     return true;
   } else if (board[0][2] == oIcon &&
       board[1][1] == oIcon &&
       board[2][0] == oIcon) {
-    print("X won");
+    print("O won");
     return true;
   } else {
     return false;

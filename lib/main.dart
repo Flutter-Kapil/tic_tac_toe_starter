@@ -36,8 +36,13 @@ class _TicTacToePageState extends State<TicTacToePage> {
                         } else {
                           board[0][0] = oIcon;
                         }
+                      }
+                      if (xWinnerCheck(board) || oWinnerCheck(board)) {
+                        gameReset();
+                      } else {
                         changePlayer(currentPlayer);
                       }
+
                       setState(() {});
                     },
                   ),
