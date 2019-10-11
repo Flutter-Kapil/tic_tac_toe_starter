@@ -27,7 +27,7 @@ Icon xIcon = Icon(
   size: 50,
 );
 Icon oIcon = Icon(
-  Icons.gps_not_fixed,
+  Icons.radio_button_unchecked,
   size: 50,
 );
 Icon playerIcon;
