@@ -48,11 +48,11 @@ class _TicTacToePageState extends State<TicTacToePage> {
   }
 
   void winnerPopup() {
-    if (winner(board, playerIcon)) {
+    if (xWinnerCheck(board) || yWinnerCheck(board)) {
       Alert(
         context: context,
         title: "game Over",
-        desc: "$currentPlayer won",
+        desc: "Player $currentPlayer won",
         buttons: [
           DialogButton(
             child: Text(
@@ -86,30 +86,92 @@ class _TicTacToePageState extends State<TicTacToePage> {
   }
 
 //function to check winner, which takes in board and Icon as input
-  bool winner(List<List<Icon>> board, Icon x) {
-    if (board[0][0] == x && board[0][1] == x && board[0][2] == x) {
-      print("$x won");
+  bool xWinnerCheck(List<List<Icon>> board) {
+    if (board[0][0] == playerXIcon &&
+        board[0][1] == playerXIcon &&
+        board[0][2] == playerXIcon) {
+      print("X won");
       return true;
-    } else if (board[1][0] == x && board[1][1] == x && board[1][2] == x) {
-      print("$x won");
+    } else if (board[1][0] == playerXIcon &&
+        board[1][1] == playerXIcon &&
+        board[1][2] == playerXIcon) {
+      print("X won");
       return true;
-    } else if (board[2][0] == x && board[2][1] == x && board[2][2] == x) {
-      print("$x won");
+    } else if (board[2][0] == playerXIcon &&
+        board[2][1] == playerXIcon &&
+        board[2][2] == playerXIcon) {
+      print("X won");
       return true;
-    } else if (board[0][0] == x && board[1][0] == x && board[2][0] == x) {
-      print("$x won");
+    } else if (board[0][0] == playerXIcon &&
+        board[1][0] == playerXIcon &&
+        board[2][0] == playerXIcon) {
+      print("X won");
       return true;
-    } else if (board[0][1] == x && board[1][1] == x && board[2][1] == x) {
-      print("$x won");
+    } else if (board[0][1] == playerXIcon &&
+        board[1][1] == playerXIcon &&
+        board[2][1] == playerXIcon) {
+      print("X won");
       return true;
-    } else if (board[0][2] == x && board[1][2] == x && board[2][2] == x) {
-      print("$x won");
+    } else if (board[0][2] == playerXIcon &&
+        board[1][2] == playerXIcon &&
+        board[2][2] == playerXIcon) {
+      print("X won");
       return true;
-    } else if (board[0][0] == x && board[1][1] == x && board[2][2] == x) {
-      print("$x won");
+    } else if (board[0][0] == playerXIcon &&
+        board[1][1] == playerXIcon &&
+        board[2][2] == playerXIcon) {
+      print("X won");
       return true;
-    } else if (board[0][2] == x && board[1][1] == x && board[2][0] == x) {
-      print("$x won");
+    } else if (board[0][2] == playerXIcon &&
+        board[1][1] == playerXIcon &&
+        board[2][0] == playerXIcon) {
+      print("X won");
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  bool yWinnerCheck(List<List<Icon>> board) {
+    if (board[0][0] == playerOIcon &&
+        board[0][1] == playerOIcon &&
+        board[0][2] == playerOIcon) {
+      print("Y won");
+      return true;
+    } else if (board[1][0] == playerOIcon &&
+        board[1][1] == playerOIcon &&
+        board[1][2] == playerOIcon) {
+      print("Y won");
+      return true;
+    } else if (board[2][0] == playerOIcon &&
+        board[2][1] == playerOIcon &&
+        board[2][2] == playerOIcon) {
+      print("Y won");
+      return true;
+    } else if (board[0][0] == playerOIcon &&
+        board[1][0] == playerOIcon &&
+        board[2][0] == playerOIcon) {
+      print("X won");
+      return true;
+    } else if (board[0][1] == playerOIcon &&
+        board[1][1] == playerOIcon &&
+        board[2][1] == playerOIcon) {
+      print("Y won");
+      return true;
+    } else if (board[0][2] == playerOIcon &&
+        board[1][2] == playerOIcon &&
+        board[2][2] == playerOIcon) {
+      print("Y won");
+      return true;
+    } else if (board[0][0] == playerOIcon &&
+        board[1][1] == playerOIcon &&
+        board[2][2] == playerOIcon) {
+      print("Y won");
+      return true;
+    } else if (board[0][2] == playerOIcon &&
+        board[1][1] == playerOIcon &&
+        board[2][0] == playerOIcon) {
+      print("Y won");
       return true;
     } else {
       return false;
@@ -281,7 +343,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                                 if (currentPlayer == "X") {
                                   board[2][0] = playerXIcon;
                                 } else if (currentPlayer == "O") {
-                                  currentPlayer = 'X';
+                                  board[2][0] = playerOIcon;
                                 }
                                 winnerPopup();
                                 changePlayer();
@@ -311,7 +373,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                                 if (currentPlayer == "X") {
                                   board[2][2] = playerXIcon;
                                 } else if (currentPlayer == "O") {
-                                  currentPlayer = 'X';
+                                  board[2][2] = playerOIcon;
                                 }
                                 winnerPopup();
                                 changePlayer();
