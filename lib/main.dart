@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
+import 'gamelogic.dart';
+
+//import 'package:flutter/animation.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -9,7 +11,41 @@ void main() {
   ));
 }
 
-enum Player { x, o }
+//class MyAnimation extends StatefulWidget {
+//  final Widget child;
+//
+//  MyAnimation({@required this.child});
+//  @override
+//  _MyAnimationState createState() => _MyAnimationState();
+//}
+//
+//class _MyAnimationState extends State<MyAnimation>
+//    with SingleTickerProviderStateMixin {
+//  AnimationController _controller;
+//  Animation _animation;
+//  @override
+//  void initState() {
+//    _controller = AnimationController(
+//      vsync: this,
+//      duration: Duration(seconds: 2),
+//    );
+//  }
+//
+//  @override
+//  dispose() {
+//    _controller.dispose();
+//    super.dispose();
+//  }
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    _controller.forward();
+//    return FadeTransition(
+//      opacity: _animation,
+//      child: widget.child,
+//    );
+//  }
+//}
 
 class TicTacToePage extends StatefulWidget {
   @override
@@ -17,173 +53,19 @@ class TicTacToePage extends StatefulWidget {
 }
 
 class _TicTacToePageState extends State<TicTacToePage> {
-  String currentPlayer = 'X';
-  Icon playerXIcon = Icon(
-    Icons.close,
-    size: 50,
-  );
-  Icon playerOIcon = Icon(
-    Icons.all_out,
-    size: 50,
-  );
-
-  List<List<Icon>> board = [
-    //empty list of icons
-    [null, null, null],
-    [null, null, null],
-    [null, null, null]
-  ];
-
-  Icon playerIcon = null;
-
-  void updateIcon(String x) {
-    // simple function to update icon and also change value of current player
-    if (x == "X") {
-      currentPlayer = 'O';
-      playerIcon = playerXIcon;
-    } else if (x == "O") {
-      playerIcon = playerOIcon;
-      currentPlayer = 'X';
-    }
-  }
-
-  void winnerPopup() {
-    if (xWinnerCheck(board) || yWinnerCheck(board)) {
-      Alert(
-        context: context,
-        title: "game Over",
-        desc: "Player $currentPlayer won",
-        buttons: [
-          DialogButton(
-            child: Text(
-              "Restart",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            onPressed: () {
-              board = [
-                [null, null, null],
-                [null, null, null],
-                [null, null, null]
-              ];
-              currentPlayer = "X";
-              playerIcon = null;
-              setState(() {});
-              return Navigator.pop(context);
-            },
-            width: 120,
-          )
-        ],
-      ).show();
-    }
-  }
-
-  void changePlayer() {
-    if (currentPlayer == 'X') {
-      currentPlayer = 'O';
-    } else {
-      currentPlayer = 'X';
-    }
-  }
-
-//function to check winner, which takes in board and Icon as input
-  bool xWinnerCheck(List<List<Icon>> board) {
-    if (board[0][0] == playerXIcon &&
-        board[0][1] == playerXIcon &&
-        board[0][2] == playerXIcon) {
-      print("X won");
-      return true;
-    } else if (board[1][0] == playerXIcon &&
-        board[1][1] == playerXIcon &&
-        board[1][2] == playerXIcon) {
-      print("X won");
-      return true;
-    } else if (board[2][0] == playerXIcon &&
-        board[2][1] == playerXIcon &&
-        board[2][2] == playerXIcon) {
-      print("X won");
-      return true;
-    } else if (board[0][0] == playerXIcon &&
-        board[1][0] == playerXIcon &&
-        board[2][0] == playerXIcon) {
-      print("X won");
-      return true;
-    } else if (board[0][1] == playerXIcon &&
-        board[1][1] == playerXIcon &&
-        board[2][1] == playerXIcon) {
-      print("X won");
-      return true;
-    } else if (board[0][2] == playerXIcon &&
-        board[1][2] == playerXIcon &&
-        board[2][2] == playerXIcon) {
-      print("X won");
-      return true;
-    } else if (board[0][0] == playerXIcon &&
-        board[1][1] == playerXIcon &&
-        board[2][2] == playerXIcon) {
-      print("X won");
-      return true;
-    } else if (board[0][2] == playerXIcon &&
-        board[1][1] == playerXIcon &&
-        board[2][0] == playerXIcon) {
-      print("X won");
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  bool yWinnerCheck(List<List<Icon>> board) {
-    if (board[0][0] == playerOIcon &&
-        board[0][1] == playerOIcon &&
-        board[0][2] == playerOIcon) {
-      print("Y won");
-      return true;
-    } else if (board[1][0] == playerOIcon &&
-        board[1][1] == playerOIcon &&
-        board[1][2] == playerOIcon) {
-      print("Y won");
-      return true;
-    } else if (board[2][0] == playerOIcon &&
-        board[2][1] == playerOIcon &&
-        board[2][2] == playerOIcon) {
-      print("Y won");
-      return true;
-    } else if (board[0][0] == playerOIcon &&
-        board[1][0] == playerOIcon &&
-        board[2][0] == playerOIcon) {
-      print("X won");
-      return true;
-    } else if (board[0][1] == playerOIcon &&
-        board[1][1] == playerOIcon &&
-        board[2][1] == playerOIcon) {
-      print("Y won");
-      return true;
-    } else if (board[0][2] == playerOIcon &&
-        board[1][2] == playerOIcon &&
-        board[2][2] == playerOIcon) {
-      print("Y won");
-      return true;
-    } else if (board[0][0] == playerOIcon &&
-        board[1][1] == playerOIcon &&
-        board[2][2] == playerOIcon) {
-      print("Y won");
-      return true;
-    } else if (board[0][2] == playerOIcon &&
-        board[1][1] == playerOIcon &&
-        board[2][0] == playerOIcon) {
-      print("Y won");
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    void winnerPopup() {
+      if (winnerCheck(board)) {
+        currentPlayer = "${currentPlayer.substring(7, 9)} Won";
+      } else {
+        changePlayer(currentPlayer);
+      }
+    }
+
     return Scaffold(
       backgroundColor: Color(0xFFD6AA7C),
-      body: SafeArea(
-          child: Container(
+      body: Container(
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
             image: DecorationImage(
@@ -194,7 +76,6 @@ class _TicTacToePageState extends State<TicTacToePage> {
             Expanded(
               flex: 3,
               child: Container(
-                margin: EdgeInsets.all(6),
                 alignment: Alignment.bottomCenter,
                 child: Text(
                   "Tic-Tac-Toe",
@@ -208,10 +89,9 @@ class _TicTacToePageState extends State<TicTacToePage> {
             Expanded(
               flex: 1,
               child: Container(
-                margin: EdgeInsets.all(6),
                 alignment: Alignment.topCenter,
                 child: Text(
-                  "Player $currentPlayer Move",
+                  "$currentPlayer",
                   style: TextStyle(
                       fontSize: 25,
                       color: Colors.white.withOpacity(0.6),
@@ -222,7 +102,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
             Expanded(
               flex: 7,
               child: Container(
-                margin: EdgeInsets.all(10),
+                margin: EdgeInsets.all(6),
                 child: Column(
                   children: <Widget>[
                     Expanded(
@@ -233,16 +113,21 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[0][0],
-                              onTap: () {
-                                if (board[0][0] == null) {
-                                  if (currentPlayer == "X") {
-                                    board[0][0] = playerXIcon;
-                                  } else if (currentPlayer == "O") {
-                                    board[0][0] = playerOIcon;
+                              colors: colorBoard[0][0],
+                              onPressed: () {
+                                if (legitMove(board[0][0])) {
+                                  print(board[0][0].runtimeType);
+                                  if (currentPlayer == 'Player X Move') {
+                                    playerIcon = xIcon;
+                                    board[0][0] = playerIcon;
+                                  } else {
+                                    playerIcon = oIcon;
+                                    board[0][0] = playerIcon;
                                   }
                                   winnerPopup();
-                                  changePlayer();
+                                  print(board[0][0].runtimeType);
                                 }
+
                                 setState(() {});
                               },
                             ),
@@ -250,16 +135,15 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[0][1],
-                              onTap: () {
-                                print(board[0][1]);
-                                if (board[0][1] == null) {
-                                  if (currentPlayer == "X") {
-                                    board[0][1] = playerXIcon;
-                                  } else if (currentPlayer == "O") {
-                                    board[0][1] = playerOIcon;
+                              colors: colorBoard[0][1],
+                              onPressed: () {
+                                if (legitMove(board[0][1])) {
+                                  if (currentPlayer == 'Player X Move') {
+                                    board[0][1] = xIcon;
+                                  } else {
+                                    board[0][1] = oIcon;
                                   }
                                   winnerPopup();
-                                  changePlayer();
                                 }
                                 setState(() {});
                               },
@@ -268,18 +152,20 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[0][2],
-                              onTap: () {
-                                if (currentPlayer == "X") {
-                                  board[0][2] = playerXIcon;
-                                } else if (currentPlayer == "O") {
-                                  board[0][2] = playerOIcon;
+                              colors: colorBoard[0][2],
+                              onPressed: () {
+                                if (legitMove(board[0][2])) {
+                                  if (currentPlayer == 'Player X Move') {
+                                    board[0][2] = xIcon;
+                                  } else {
+                                    board[0][2] = oIcon;
+                                  }
+                                  winnerPopup();
                                 }
-                                winnerPopup();
-                                changePlayer();
                                 setState(() {});
                               },
                             ),
-                          ),
+                          )
                         ],
                       ),
                     ),
@@ -291,14 +177,16 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[1][0],
-                              onTap: () {
-                                if (currentPlayer == "X") {
-                                  board[1][0] = playerXIcon;
-                                } else if (currentPlayer == "O") {
-                                  board[1][0] = playerOIcon;
+                              colors: colorBoard[1][0],
+                              onPressed: () {
+                                if (legitMove(board[1][0])) {
+                                  if (currentPlayer == 'Player X Move') {
+                                    board[1][0] = xIcon;
+                                  } else {
+                                    board[1][0] = oIcon;
+                                  }
+                                  winnerPopup();
                                 }
-                                winnerPopup();
-                                changePlayer();
                                 setState(() {});
                               },
                             ),
@@ -306,14 +194,16 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[1][1],
-                              onTap: () {
-                                if (currentPlayer == "X") {
-                                  board[1][1] = playerXIcon;
-                                } else if (currentPlayer == "O") {
-                                  board[1][1] = playerOIcon;
+                              colors: colorBoard[1][1],
+                              onPressed: () {
+                                if (legitMove(board[1][1])) {
+                                  if (currentPlayer == 'Player X Move') {
+                                    board[1][1] = xIcon;
+                                  } else {
+                                    board[1][1] = oIcon;
+                                  }
+                                  winnerPopup();
                                 }
-                                winnerPopup();
-                                changePlayer();
                                 setState(() {});
                               },
                             ),
@@ -321,18 +211,20 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[1][2],
-                              onTap: () {
-                                if (currentPlayer == "X") {
-                                  board[1][2] = playerXIcon;
-                                } else if (currentPlayer == "O") {
-                                  board[1][2] = playerOIcon;
+                              colors: colorBoard[1][2],
+                              onPressed: () {
+                                if (legitMove(board[1][2])) {
+                                  if (currentPlayer == 'Player X Move') {
+                                    board[1][2] = xIcon;
+                                  } else {
+                                    board[1][2] = oIcon;
+                                  }
+                                  winnerPopup();
                                 }
-                                winnerPopup();
-                                changePlayer();
                                 setState(() {});
                               },
                             ),
-                          ),
+                          )
                         ],
                       ),
                     ),
@@ -344,14 +236,16 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[2][0],
-                              onTap: () {
-                                if (currentPlayer == "X") {
-                                  board[2][0] = playerXIcon;
-                                } else if (currentPlayer == "O") {
-                                  board[2][0] = playerOIcon;
+                              colors: colorBoard[2][0],
+                              onPressed: () {
+                                if (legitMove(board[2][0])) {
+                                  if (currentPlayer == 'Player X Move') {
+                                    board[2][0] = xIcon;
+                                  } else {
+                                    board[2][0] = oIcon;
+                                  }
+                                  winnerPopup();
                                 }
-                                winnerPopup();
-                                changePlayer();
                                 setState(() {});
                               },
                             ),
@@ -359,14 +253,16 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[2][1],
-                              onTap: () {
-                                if (currentPlayer == "X") {
-                                  board[2][1] = playerXIcon;
-                                } else if (currentPlayer == "O") {
-                                  board[2][1] = playerOIcon;
+                              colors: colorBoard[2][1],
+                              onPressed: () {
+                                if (legitMove(board[2][1])) {
+                                  if (currentPlayer == 'Player X Move') {
+                                    board[2][1] = xIcon;
+                                  } else {
+                                    board[2][1] = oIcon;
+                                  }
+                                  winnerPopup();
                                 }
-                                winnerPopup();
-                                changePlayer();
                                 setState(() {});
                               },
                             ),
@@ -374,18 +270,20 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[2][2],
-                              onTap: () {
-                                if (currentPlayer == "X") {
-                                  board[2][2] = playerXIcon;
-                                } else if (currentPlayer == "O") {
-                                  board[2][2] = playerOIcon;
+                              colors: colorBoard[2][2],
+                              onPressed: () {
+                                if (legitMove(board[2][2])) {
+                                  if (currentPlayer == 'Player X Move') {
+                                    board[2][2] = xIcon;
+                                  } else {
+                                    board[2][2] = oIcon;
+                                  }
+                                  winnerPopup();
                                 }
-                                winnerPopup();
-                                changePlayer();
                                 setState(() {});
                               },
                             ),
-                          ),
+                          )
                         ],
                       ),
                     ),
@@ -397,7 +295,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
               flex: 2,
               child: Visibility(
                   child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(
                     child: SizedBox(),
@@ -409,12 +307,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                       child: FlatButton(
                         color: Color(0xFF848AC1),
                         onPressed: () {
-                          board = [
-                            [null, null, null],
-                            [null, null, null],
-                            [null, null, null]
-                          ];
-                          currentPlayer = "X";
+                          gameReset();
                           setState(() {});
                         },
                         child: Text("Reset",
@@ -432,26 +325,35 @@ class _TicTacToePageState extends State<TicTacToePage> {
             )
           ],
         ),
-      )),
+      ),
     );
   }
 }
 
 class OneBox extends StatelessWidget {
   final Widget buttonChild;
-  final Function onTap;
-  OneBox({this.buttonChild = const Text(''), this.onTap});
+  final Function onPressed;
+  final Color colors;
+  OneBox(
+      {this.buttonChild = const Text(''),
+      this.onPressed,
+      this.colors = Colors.white24});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       child: FlatButton(
-        child: buttonChild,
-        onPressed: onTap,
+        child: AnimatedSwitcher(
+            switchOutCurve: Curves.bounceOut,
+            switchInCurve: Curves.fastOutSlowIn,
+            duration: const Duration(milliseconds: 600),
+            child: buttonChild),
+        onPressed: onPressed,
       ),
-      margin: EdgeInsets.all(6),
+      margin: EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.4),
+        color: colors,
         borderRadius: BorderRadius.all(
           Radius.circular(14),
         ),
