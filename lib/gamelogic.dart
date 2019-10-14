@@ -13,7 +13,7 @@ List<List<Color>> colorBoard = [
   [Colors.white24, Colors.white24, Colors.white24]
 ];
 
-bool legitMove(Icon icon) => icon == null;
+bool legitMove(Icon icon) => icon == null && !winnerCheck(board);
 //return true if we give it value like board[0][0]
 
 void midFunction(String livePlayer, var x) {
@@ -30,11 +30,11 @@ void midFunction(String livePlayer, var x) {
 String currentPlayer = 'Player X Move'; //X will always be player 1
 Icon xIcon = Icon(
   Icons.close,
-  size: 90,
+  size: 70,
 );
 Icon oIcon = Icon(
   Icons.radio_button_unchecked,
-  size: 90,
+  size: 70,
 );
 Icon playerIcon;
 

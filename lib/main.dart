@@ -342,12 +342,16 @@ class OneBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       child: FlatButton(
         child: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 700), child: buttonChild),
+            switchOutCurve: Curves.bounceOut,
+            switchInCurve: Curves.fastOutSlowIn,
+            duration: const Duration(milliseconds: 600),
+            child: buttonChild),
         onPressed: onPressed,
       ),
-      margin: EdgeInsets.all(6),
+      margin: EdgeInsets.all(4),
       decoration: BoxDecoration(
         color: colors,
         borderRadius: BorderRadius.all(
