@@ -11,7 +11,7 @@ bool legitMove(Icon icon) => icon == null;
 //return true if we give it value like board[0][0]
 
 void midFunction(String livePlayer, var x) {
-  if (livePlayer == 'X') {
+  if (livePlayer == 'Player X Move') {
     playerIcon = xIcon;
     x = playerIcon;
   } else {
@@ -21,7 +21,7 @@ void midFunction(String livePlayer, var x) {
 }
 
 //default parameters
-String currentPlayer = 'X'; //X will always be player 1
+String currentPlayer = 'Player X Move'; //X will always be player 1
 Icon xIcon = Icon(
   Icons.close,
   size: 50,
@@ -34,10 +34,10 @@ Icon playerIcon;
 
 //function to change player based on currentPlayer value which is a string,
 void changePlayer(String x) {
-  if (x == 'X') {
-    currentPlayer = 'O';
-  } else if (x == 'O') {
-    currentPlayer = 'X';
+  if (x == 'Player X Move') {
+    currentPlayer = 'Player O Move';
+  } else if (x == 'Player O Move') {
+    currentPlayer = 'Player X Move';
   }
 }
 
@@ -47,7 +47,7 @@ void gameReset() {
     [null, null, null],
     [null, null, null]
   ];
-  currentPlayer = 'X';
+  currentPlayer = 'Player X Move';
 }
 
 void gameWin(List<List<Icon>> gameBoard) {

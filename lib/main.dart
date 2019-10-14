@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'gamelogic.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -21,30 +20,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
   Widget build(BuildContext context) {
     void winnerPopup() {
       if (winnerCheck(board)) {
-        Alert(
-          context: context,
-          title: "Game Over",
-          desc: "Player $currentPlayer Won",
-          style: const AlertStyle(
-            backgroundColor: Colors.white30,
-            isOverlayTapDismiss: false,
-            isCloseButton: false,
-          ),
-          buttons: [
-            DialogButton(
-              child: Text(
-                "Restart",
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-              onPressed: () {
-                gameReset();
-                setState(() {});
-                return Navigator.pop(context);
-              },
-              width: 120,
-            )
-          ],
-        ).show();
+        currentPlayer = "${currentPlayer.substring(7, 9)} Won";
       } else {
         changePlayer(currentPlayer);
       }
@@ -78,7 +54,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
               child: Container(
                 alignment: Alignment.topCenter,
                 child: Text(
-                  "Player $currentPlayer Move",
+                  "$currentPlayer",
                   style: TextStyle(
                       fontSize: 25,
                       color: Colors.white.withOpacity(0.6),
@@ -103,7 +79,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               onPressed: () {
                                 if (legitMove(board[0][0])) {
                                   print(board[0][0].runtimeType);
-                                  if (currentPlayer == 'X') {
+                                  if (currentPlayer == 'Player X Move') {
                                     playerIcon = xIcon;
                                     board[0][0] = playerIcon;
                                   } else {
@@ -123,7 +99,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[0][1],
                               onPressed: () {
                                 if (legitMove(board[0][1])) {
-                                  if (currentPlayer == 'X') {
+                                  if (currentPlayer == 'Player X Move') {
                                     board[0][1] = xIcon;
                                   } else {
                                     board[0][1] = oIcon;
@@ -139,7 +115,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[0][2],
                               onPressed: () {
                                 if (legitMove(board[0][2])) {
-                                  if (currentPlayer == 'X') {
+                                  if (currentPlayer == 'Player X Move') {
                                     board[0][2] = xIcon;
                                   } else {
                                     board[0][2] = oIcon;
@@ -163,7 +139,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[1][0],
                               onPressed: () {
                                 if (legitMove(board[1][0])) {
-                                  if (currentPlayer == 'X') {
+                                  if (currentPlayer == 'Player X Move') {
                                     board[1][0] = xIcon;
                                   } else {
                                     board[1][0] = oIcon;
@@ -179,7 +155,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[1][1],
                               onPressed: () {
                                 if (legitMove(board[1][1])) {
-                                  if (currentPlayer == 'X') {
+                                  if (currentPlayer == 'Player X Move') {
                                     board[1][1] = xIcon;
                                   } else {
                                     board[1][1] = oIcon;
@@ -195,7 +171,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[1][2],
                               onPressed: () {
                                 if (legitMove(board[1][2])) {
-                                  if (currentPlayer == 'X') {
+                                  if (currentPlayer == 'Player X Move') {
                                     board[1][2] = xIcon;
                                   } else {
                                     board[1][2] = oIcon;
@@ -219,7 +195,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[2][0],
                               onPressed: () {
                                 if (legitMove(board[2][0])) {
-                                  if (currentPlayer == 'X') {
+                                  if (currentPlayer == 'Player X Move') {
                                     board[2][0] = xIcon;
                                   } else {
                                     board[2][0] = oIcon;
@@ -235,7 +211,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[2][1],
                               onPressed: () {
                                 if (legitMove(board[2][1])) {
-                                  if (currentPlayer == 'X') {
+                                  if (currentPlayer == 'Player X Move') {
                                     board[2][1] = xIcon;
                                   } else {
                                     board[2][1] = oIcon;
@@ -251,7 +227,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[2][2],
                               onPressed: () {
                                 if (legitMove(board[2][2])) {
-                                  if (currentPlayer == 'X') {
+                                  if (currentPlayer == 'Player X Move') {
                                     board[2][2] = xIcon;
                                   } else {
                                     board[2][2] = oIcon;
