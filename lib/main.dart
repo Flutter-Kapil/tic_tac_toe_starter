@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'gamelogic.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:flutter/animation.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -76,6 +76,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[0][0],
+                              colors: colorBoard[0][0],
                               onPressed: () {
                                 if (legitMove(board[0][0])) {
                                   print(board[0][0].runtimeType);
@@ -97,6 +98,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[0][1],
+                              colors: colorBoard[0][1],
                               onPressed: () {
                                 if (legitMove(board[0][1])) {
                                   if (currentPlayer == 'Player X Move') {
@@ -113,6 +115,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[0][2],
+                              colors: colorBoard[0][2],
                               onPressed: () {
                                 if (legitMove(board[0][2])) {
                                   if (currentPlayer == 'Player X Move') {
@@ -137,6 +140,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[1][0],
+                              colors: colorBoard[1][0],
                               onPressed: () {
                                 if (legitMove(board[1][0])) {
                                   if (currentPlayer == 'Player X Move') {
@@ -153,6 +157,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[1][1],
+                              colors: colorBoard[1][1],
                               onPressed: () {
                                 if (legitMove(board[1][1])) {
                                   if (currentPlayer == 'Player X Move') {
@@ -169,6 +174,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[1][2],
+                              colors: colorBoard[1][2],
                               onPressed: () {
                                 if (legitMove(board[1][2])) {
                                   if (currentPlayer == 'Player X Move') {
@@ -193,6 +199,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[2][0],
+                              colors: colorBoard[2][0],
                               onPressed: () {
                                 if (legitMove(board[2][0])) {
                                   if (currentPlayer == 'Player X Move') {
@@ -209,6 +216,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[2][1],
+                              colors: colorBoard[2][1],
                               onPressed: () {
                                 if (legitMove(board[2][1])) {
                                   if (currentPlayer == 'Player X Move') {
@@ -225,6 +233,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                           Expanded(
                             child: OneBox(
                               buttonChild: board[2][2],
+                              colors: colorBoard[2][2],
                               onPressed: () {
                                 if (legitMove(board[2][2])) {
                                   if (currentPlayer == 'Player X Move') {
@@ -287,7 +296,11 @@ class _TicTacToePageState extends State<TicTacToePage> {
 class OneBox extends StatelessWidget {
   final Widget buttonChild;
   final Function onPressed;
-  OneBox({this.buttonChild = const Text(''), this.onPressed});
+  final Color colors;
+  OneBox(
+      {this.buttonChild = const Text(''),
+      this.onPressed,
+      this.colors = Colors.white24});
 
   @override
   Widget build(BuildContext context) {
@@ -298,7 +311,7 @@ class OneBox extends StatelessWidget {
       ),
       margin: EdgeInsets.all(6),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.4),
+        color: colors,
         borderRadius: BorderRadius.all(
           Radius.circular(14),
         ),
