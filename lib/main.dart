@@ -2,13 +2,50 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'gamelogic.dart';
-import 'package:flutter/animation.dart';
+
+//import 'package:flutter/animation.dart';
 
 void main() {
   runApp(MaterialApp(
     home: TicTacToePage(),
   ));
 }
+
+//class MyAnimation extends StatefulWidget {
+//  final Widget child;
+//
+//  MyAnimation({@required this.child});
+//  @override
+//  _MyAnimationState createState() => _MyAnimationState();
+//}
+//
+//class _MyAnimationState extends State<MyAnimation>
+//    with SingleTickerProviderStateMixin {
+//  AnimationController _controller;
+//  Animation _animation;
+//  @override
+//  void initState() {
+//    _controller = AnimationController(
+//      vsync: this,
+//      duration: Duration(seconds: 2),
+//    );
+//  }
+//
+//  @override
+//  dispose() {
+//    _controller.dispose();
+//    super.dispose();
+//  }
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    _controller.forward();
+//    return FadeTransition(
+//      opacity: _animation,
+//      child: widget.child,
+//    );
+//  }
+//}
 
 class TicTacToePage extends StatefulWidget {
   @override
@@ -306,7 +343,8 @@ class OneBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: FlatButton(
-        child: buttonChild,
+        child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 700), child: buttonChild),
         onPressed: onPressed,
       ),
       margin: EdgeInsets.all(6),

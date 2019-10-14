@@ -30,11 +30,11 @@ void midFunction(String livePlayer, var x) {
 String currentPlayer = 'Player X Move'; //X will always be player 1
 Icon xIcon = Icon(
   Icons.close,
-  size: 50,
+  size: 90,
 );
 Icon oIcon = Icon(
   Icons.radio_button_unchecked,
-  size: 50,
+  size: 90,
 );
 Icon playerIcon;
 
