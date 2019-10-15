@@ -115,16 +115,3 @@ bool winnerCheck(List<List<Icon>> board) {
     return false;
   }
 }
-
-void buttonClick(Function wpopup, Icon x) {
-  if (legitMove(x)) {
-    if (currentPlayer == 'Player X Move') {
-      playerIcon = xIcon;
-      x = playerIcon;
-    } else {
-      playerIcon = oIcon;
-      x = playerIcon;
-    }
-    wpopup();
-  }
-}

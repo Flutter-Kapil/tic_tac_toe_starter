@@ -17,11 +17,6 @@ class TicTacToePage extends StatefulWidget {
 }
 
 class _TicTacToePageState extends State<TicTacToePage> {
-  double opacityLevel = 1.0;
-  void _changeOpacity() {
-    setState(() => opacityLevel = opacityLevel == 0 ? 1.0 : 0.0);
-  }
-
   void winnerPopup() {
     if (winnerCheck(board)) {
       currentPlayer = "${currentPlayer.substring(7, 9)} Won";
@@ -81,10 +76,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                         children: <Widget>[
                           Expanded(
                             child: OneBox(
-                              buttonChild: AnimatedOpacity(
-                                  opacity: opacityLevel,
-                                  duration: Duration(seconds: 10),
-                                  child: board[0][0]),
+                              buttonChild: board[0][0],
                               colors: colorBoard[0][0],
                               onPressed: () {
                                 updateBox(0, 0);
@@ -258,7 +250,10 @@ class OneBox extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       child: FlatButton(
-        child: buttonChild,
+        child: AnimatedOpacity(
+            duration: Duration(milliseconds: 600),
+            opacity: buttonChild == null ? 0.0 : 1.0,
+            child: buttonChild),
         onPressed: onPressed,
       ),
       margin: EdgeInsets.all(4),
