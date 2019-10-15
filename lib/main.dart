@@ -11,23 +11,22 @@ void main() {
   ));
 }
 
-
 class TicTacToePage extends StatefulWidget {
   @override
   _TicTacToePageState createState() => _TicTacToePageState();
 }
 
 class _TicTacToePageState extends State<TicTacToePage> {
+  void winnerPopup() {
+    if (winnerCheck(board)) {
+      currentPlayer = "${currentPlayer.substring(7, 9)} Won";
+    } else {
+      changePlayer(currentPlayer);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    void winnerPopup() {
-      if (winnerCheck(board)) {
-        currentPlayer = "${currentPlayer.substring(7, 9)} Won";
-      } else {
-        changePlayer(currentPlayer);
-      }
-    }
-
     return Scaffold(
       backgroundColor: Color(0xFFD6AA7C),
       body: Container(
@@ -80,19 +79,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[0][0],
                               colors: colorBoard[0][0],
                               onPressed: () {
-                                if (legitMove(board[0][0])) {
-                                  print(board[0][0].runtimeType);
-                                  if (currentPlayer == 'Player X Move') {
-                                    playerIcon = xIcon;
-                                    board[0][0] = playerIcon;
-                                  } else {
-                                    playerIcon = oIcon;
-                                    board[0][0] = playerIcon;
-                                  }
-                                  winnerPopup();
-                                  print(board[0][0].runtimeType);
-                                }
-
+                                updateBox(0, 0);
                                 setState(() {});
                               },
                             ),
@@ -102,14 +89,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[0][1],
                               colors: colorBoard[0][1],
                               onPressed: () {
-                                if (legitMove(board[0][1])) {
-                                  if (currentPlayer == 'Player X Move') {
-                                    board[0][1] = xIcon;
-                                  } else {
-                                    board[0][1] = oIcon;
-                                  }
-                                  winnerPopup();
-                                }
+                                updateBox(0, 1);
                                 setState(() {});
                               },
                             ),
@@ -293,6 +273,17 @@ class _TicTacToePageState extends State<TicTacToePage> {
       ),
     );
   }
+
+  void updateBox(int r, int c) {
+    if (legitMove(board[r][c])) {
+      if (currentPlayer == 'Player X Move') {
+        board[r][c] = xIcon;
+      } else {
+        board[r][c] = oIcon;
+      }
+      winnerPopup();
+    }
+  }
 }
 
 class OneBox extends StatelessWidget {
@@ -324,5 +315,18 @@ class OneBox extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+void buttonClick2(Function wpopup, Icon x) {
+  if (legitMove(x)) {
+    if (currentPlayer == 'Player X Move') {
+      playerIcon = xIcon;
+      x = playerIcon;
+    } else {
+      playerIcon = oIcon;
+      x = playerIcon;
+    }
+    wpopup();
   }
 }
