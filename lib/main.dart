@@ -17,6 +17,11 @@ class TicTacToePage extends StatefulWidget {
 }
 
 class _TicTacToePageState extends State<TicTacToePage> {
+  double opacityLevel = 1.0;
+  void _changeOpacity() {
+    setState(() => opacityLevel = opacityLevel == 0 ? 1.0 : 0.0);
+  }
+
   void winnerPopup() {
     if (winnerCheck(board)) {
       currentPlayer = "${currentPlayer.substring(7, 9)} Won";
@@ -76,7 +81,10 @@ class _TicTacToePageState extends State<TicTacToePage> {
                         children: <Widget>[
                           Expanded(
                             child: OneBox(
-                              buttonChild: board[0][0],
+                              buttonChild: AnimatedOpacity(
+                                  opacity: opacityLevel,
+                                  duration: Duration(seconds: 10),
+                                  child: board[0][0]),
                               colors: colorBoard[0][0],
                               onPressed: () {
                                 updateBox(0, 0);
@@ -99,14 +107,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[0][2],
                               colors: colorBoard[0][2],
                               onPressed: () {
-                                if (legitMove(board[0][2])) {
-                                  if (currentPlayer == 'Player X Move') {
-                                    board[0][2] = xIcon;
-                                  } else {
-                                    board[0][2] = oIcon;
-                                  }
-                                  winnerPopup();
-                                }
+                                updateBox(0, 2);
                                 setState(() {});
                               },
                             ),
@@ -124,14 +125,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[1][0],
                               colors: colorBoard[1][0],
                               onPressed: () {
-                                if (legitMove(board[1][0])) {
-                                  if (currentPlayer == 'Player X Move') {
-                                    board[1][0] = xIcon;
-                                  } else {
-                                    board[1][0] = oIcon;
-                                  }
-                                  winnerPopup();
-                                }
+                                updateBox(1, 0);
                                 setState(() {});
                               },
                             ),
@@ -141,14 +135,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[1][1],
                               colors: colorBoard[1][1],
                               onPressed: () {
-                                if (legitMove(board[1][1])) {
-                                  if (currentPlayer == 'Player X Move') {
-                                    board[1][1] = xIcon;
-                                  } else {
-                                    board[1][1] = oIcon;
-                                  }
-                                  winnerPopup();
-                                }
+                                updateBox(1, 1);
                                 setState(() {});
                               },
                             ),
@@ -158,14 +145,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[1][2],
                               colors: colorBoard[1][2],
                               onPressed: () {
-                                if (legitMove(board[1][2])) {
-                                  if (currentPlayer == 'Player X Move') {
-                                    board[1][2] = xIcon;
-                                  } else {
-                                    board[1][2] = oIcon;
-                                  }
-                                  winnerPopup();
-                                }
+                                updateBox(1, 2);
                                 setState(() {});
                               },
                             ),
@@ -183,14 +163,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[2][0],
                               colors: colorBoard[2][0],
                               onPressed: () {
-                                if (legitMove(board[2][0])) {
-                                  if (currentPlayer == 'Player X Move') {
-                                    board[2][0] = xIcon;
-                                  } else {
-                                    board[2][0] = oIcon;
-                                  }
-                                  winnerPopup();
-                                }
+                                updateBox(2, 0);
                                 setState(() {});
                               },
                             ),
@@ -200,14 +173,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[2][1],
                               colors: colorBoard[2][1],
                               onPressed: () {
-                                if (legitMove(board[2][1])) {
-                                  if (currentPlayer == 'Player X Move') {
-                                    board[2][1] = xIcon;
-                                  } else {
-                                    board[2][1] = oIcon;
-                                  }
-                                  winnerPopup();
-                                }
+                                updateBox(2, 1);
                                 setState(() {});
                               },
                             ),
@@ -217,14 +183,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                               buttonChild: board[2][2],
                               colors: colorBoard[2][2],
                               onPressed: () {
-                                if (legitMove(board[2][2])) {
-                                  if (currentPlayer == 'Player X Move') {
-                                    board[2][2] = xIcon;
-                                  } else {
-                                    board[2][2] = oIcon;
-                                  }
-                                  winnerPopup();
-                                }
+                                updateBox(2, 2);
                                 setState(() {});
                               },
                             ),
@@ -238,8 +197,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
             ),
             Expanded(
               flex: 2,
-              child: Visibility(
-                  child: Row(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(
@@ -266,7 +224,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
                     flex: 1,
                   ),
                 ],
-              )),
+              ),
             )
           ],
         ),
@@ -300,11 +258,7 @@ class OneBox extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       child: FlatButton(
-        child: AnimatedSwitcher(
-            switchOutCurve: Curves.bounceOut,
-            switchInCurve: Curves.fastOutSlowIn,
-            duration: const Duration(milliseconds: 600),
-            child: buttonChild),
+        child: buttonChild,
         onPressed: onPressed,
       ),
       margin: EdgeInsets.all(4),
@@ -315,18 +269,5 @@ class OneBox extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-void buttonClick2(Function wpopup, Icon x) {
-  if (legitMove(x)) {
-    if (currentPlayer == 'Player X Move') {
-      playerIcon = xIcon;
-      x = playerIcon;
-    } else {
-      playerIcon = oIcon;
-      x = playerIcon;
-    }
-    wpopup();
   }
 }
