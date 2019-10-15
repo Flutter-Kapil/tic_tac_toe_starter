@@ -11,41 +11,6 @@ void main() {
   ));
 }
 
-//class MyAnimation extends StatefulWidget {
-//  final Widget child;
-//
-//  MyAnimation({@required this.child});
-//  @override
-//  _MyAnimationState createState() => _MyAnimationState();
-//}
-//
-//class _MyAnimationState extends State<MyAnimation>
-//    with SingleTickerProviderStateMixin {
-//  AnimationController _controller;
-//  Animation _animation;
-//  @override
-//  void initState() {
-//    _controller = AnimationController(
-//      vsync: this,
-//      duration: Duration(seconds: 2),
-//    );
-//  }
-//
-//  @override
-//  dispose() {
-//    _controller.dispose();
-//    super.dispose();
-//  }
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    _controller.forward();
-//    return FadeTransition(
-//      opacity: _animation,
-//      child: widget.child,
-//    );
-//  }
-//}
 
 class TicTacToePage extends StatefulWidget {
   @override
