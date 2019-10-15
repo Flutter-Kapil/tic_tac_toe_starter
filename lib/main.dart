@@ -20,6 +20,8 @@ class _TicTacToePageState extends State<TicTacToePage> {
   void winnerPopup() {
     if (winnerCheck(board)) {
       currentPlayer = "${currentPlayer.substring(7, 9)} Won";
+    } else if (fullBoard(board)) {
+      currentPlayer = "draw";
     } else {
       changePlayer(currentPlayer);
     }

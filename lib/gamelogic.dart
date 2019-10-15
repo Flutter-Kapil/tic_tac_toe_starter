@@ -54,10 +54,19 @@ void gameReset() {
   currentPlayer = 'Player X Move';
 }
 
-void gameWin(List<List<Icon>> gameBoard) {
+bool fullBoard(List<List<Icon>> board) {
+  bool full = false;
   for (int i = 0; i < 3; i++) {
-    gameBoard[0][i] = xIcon;
+    for (int j = 0; j < 3; j++) {
+      if (board[i][j] == xIcon)
+        full = true;
+      else if (board[i][j] == oIcon)
+        full = true;
+      else
+        full = false;
+    }
   }
+  return full;
 }
 
 bool winnerCheck(List<List<Icon>> board) {
